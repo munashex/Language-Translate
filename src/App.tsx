@@ -3,7 +3,8 @@ import Navbar from "./components/Navbar"
 import Home from './Pages/Home' 
 import SearchBox from './Pages/Searchbox' 
 import Language from './Pages/Language' 
-import LeftLanguage from './Pages/LeftLanguage'
+import LeftLanguage from './Pages/LeftLanguage' 
+import NotFound from './Pages/NotFound'
 
 
 const App = () => {
@@ -16,8 +17,9 @@ const App = () => {
     <Route path="/" element={<Home/>}> 
      <Route index element={<SearchBox/>}/> 
      <Route path="languages" element={<Language/>}/> 
-     <Route path="leftlanguages" element={<LeftLanguage/>}/>
-    </Route>
+     <Route path="leftlanguages" element={<LeftLanguage/>}/> 
+    </Route> 
+    <Route path="*" element={<NotFound/>}/>
    </Routes>
    </BrowserRouter>
     </div>
