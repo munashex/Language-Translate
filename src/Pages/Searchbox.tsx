@@ -4,10 +4,12 @@ import axios from 'axios';
 const SearchBox = () => {
   const [text, setText] = useState('');
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState('');
+  const [results, setResults] = useState(''); 
+  const [error, setError] = useState('')
 
   const rightLanguage = localStorage.getItem('rightLanguage') || 'en';
-  const leftLanguage = localStorage.getItem('leftLanguage') || 'fr';
+  const leftLanguage = localStorage.getItem('leftLanguage') || 'fr'; 
+  const errorMsg = 'text parameter is required'
 
   const encodedParams = new URLSearchParams();
   encodedParams.set('source_language', rightLanguage);
@@ -31,8 +33,8 @@ const SearchBox = () => {
       const response = await axios.request(options);
       setResults(response.data.data.translatedText);
       setLoading(false);
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      setError(error.response.data.message)
       setLoading(false);
     }
   };
@@ -44,10 +46,10 @@ const SearchBox = () => {
   return (
     <div className="container mx-auto p-4">
       <div className="flex justify-center mb-4">
-        <button
+      <button
+             disabled={text.length < 2 || loading}
           onClick={translate}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          disabled={text.length < 2 || loading}
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
         >
           {loading ? 'Translating...' : 'Translate'}
         </button>
@@ -65,8 +67,9 @@ const SearchBox = () => {
             loading ? 'animate-pulse' : ''
           }`}
         >
-          <h1 className="text-lg p-1">{loading ? 'Translating...' : results}</h1>
-        </div>
+          <h1 className="text-lg p-1"> {loading ? 'Translating...': results}</h1> 
+          <h1 className="text-lg text-[red]">{error && error === errorMsg ? null : error}</h1>  
+         </div>
       </div>
     </div>
   );
