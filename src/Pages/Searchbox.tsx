@@ -54,7 +54,7 @@ const SearchBox = () => {
           {loading ? 'Translating...' : 'Translate'}
         </button>
       </div>
-      <div className="flex flex-col md:flex-row gap-2 mx-2">
+      <div className="flex flex-col md:flex-row gap-2">
         <div className="w-full">
           <textarea
             onChange={(e) => setText(e.target.value)}
@@ -63,7 +63,7 @@ const SearchBox = () => {
           />
         </div>
         <div
-          className={`w-full h-24 md:h-44 bg-gray-200 rounded-md flex items-center justify-center ${
+          className={`w-full h-44 md:h-44 bg-gray-200 rounded-md flex items-center justify-center ${
             loading ? 'animate-pulse' : ''
           }`}
         >
