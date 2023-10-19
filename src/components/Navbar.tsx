@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Navbar() {
   return (
-    <div className="p-2 border-b bg-black">
+    <div className="p-3 border-b bg-black">
     <Link to="">
         <img src={logo} 
         className="w-44"

@@ -63,11 +63,11 @@ const SearchBox = () => {
           />
         </div>
         <div
-          className={`w-full h-44 md:h-44 bg-gray-200 rounded-md flex items-start justify-center ${
+          className={`w-full h-44 overflow-y-auto md:h-44 p-2 bg-gray-200 rounded-md flex items-start justify-center ${
             loading ? 'animate-pulse' : ''
           }`}
         >
-          <h1 className="text-lg p-1"> {loading ? 'Translating...': results}</h1> 
+          <h1 className="text-lg p-1 text-slate-700 font-bold"> {loading ? 'Translating...': results}</h1> 
           <h1 className="text-lg text-[red]">{error && error === errorMsg ? null : error}</h1>  
          </div>
       </div>
